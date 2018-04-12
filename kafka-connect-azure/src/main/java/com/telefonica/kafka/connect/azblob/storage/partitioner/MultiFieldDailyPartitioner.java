@@ -110,9 +110,6 @@ public class MultiFieldDailyPartitioner<T> extends TimeBasedPartitioner<T> {
       throw new PartitionException("Error encoding partition.");
     }
 
-    if (partition.length() > 0) {
-      partition.delete(partition.length() - delim.length(), partition.length());
-    }
     partition.append(super.encodePartition(sinkRecord));
     return partition.toString();
   }
