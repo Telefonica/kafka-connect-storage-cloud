@@ -32,20 +32,20 @@ import io.confluent.connect.s3.util.Version;
 /**
  * Connector class for Amazon Simple Storage Service (S3).
  */
-public class S3SinkConnector extends SinkConnector {
-  private static final Logger log = LoggerFactory.getLogger(S3SinkConnector.class);
+public class CustomS3SinkConnector extends SinkConnector {
+  private static final Logger log = LoggerFactory.getLogger(CustomS3SinkConnector.class);
   private Map<String, String> configProps;
   private S3SinkConnectorConfig config;
 
   /**
    * No-arg constructor. It is instantiated by Connect framework.
    */
-  public S3SinkConnector() {
+  public CustomS3SinkConnector() {
     // no-arg constructor required by Connect framework.
   }
 
   // Visible for testing.
-  S3SinkConnector(S3SinkConnectorConfig config) {
+  CustomS3SinkConnector(S3SinkConnectorConfig config) {
     this.config = config;
   }
 

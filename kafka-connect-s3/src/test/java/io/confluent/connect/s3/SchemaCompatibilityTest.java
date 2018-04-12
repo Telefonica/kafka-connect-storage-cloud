@@ -34,7 +34,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-public class SchemaCompatibilityTest extends S3SinkConnectorTestBase {
+public class SchemaCompatibilityTest extends CustomS3SinkConnectorTestBase {
 
   String key;
   Schema schema;

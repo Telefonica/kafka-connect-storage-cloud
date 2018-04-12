@@ -24,18 +24,18 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertNotNull;
 
-public class S3SinkConnectorTest {
+public class CustomS3SinkConnectorTest {
 
   @Test
   public void testVersion() {
-    String version = new S3SinkConnector().version();
+    String version = new CustomS3SinkConnector().version();
     assertNotNull(version);
     assertFalse(version.isEmpty());
   }
 
   @Test
   public void connectorType() {
-    Connector connector = new S3SinkConnector();
+    Connector connector = new CustomS3SinkConnector();
     assertTrue(SinkConnector.class.isAssignableFrom(connector.getClass()));
   }
 }

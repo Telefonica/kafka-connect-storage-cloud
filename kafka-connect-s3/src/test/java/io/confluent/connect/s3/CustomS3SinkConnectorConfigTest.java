@@ -25,7 +25,7 @@ import io.confluent.connect.storage.common.StorageCommonConfig;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-public class S3SinkConnectorConfigTest extends S3SinkConnectorTestBase {
+public class CustomS3SinkConnectorConfigTest extends CustomS3SinkConnectorTestBase {
 
   @Before
   @Override

@@ -181,7 +181,7 @@ Example
 The example settings are contained in ``etc/kafka-connect-s3/quickstart-s3.properties`` as follows::
 
   name=s3-sink
-  connector.class=io.confluent.connect.s3.S3SinkConnector
+  connector.class=io.confluent.connect.s3.CustomS3SinkConnector
   tasks.max=1
   topics=s3_topic
   flush.size=3

@@ -47,7 +47,7 @@ import io.confluent.connect.s3.format.json.JsonUtils;
 import io.confluent.connect.s3.util.FileUtils;
 import io.confluent.connect.storage.common.StorageCommonConfig;
 
-public class TestWithMockedS3 extends S3SinkConnectorTestBase {
+public class TestWithMockedS3 extends CustomS3SinkConnectorTestBase {
 
   private static final Logger log = LoggerFactory.getLogger(TestWithMockedS3.class);
 

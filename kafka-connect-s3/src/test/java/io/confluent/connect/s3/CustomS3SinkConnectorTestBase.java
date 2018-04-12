@@ -42,9 +42,9 @@ import io.confluent.connect.storage.partitioner.PartitionerConfig;
 import io.confluent.connect.storage.schema.SchemaCompatibility;
 import io.confluent.connect.storage.schema.StorageSchemaCompatibility;
 
-public class S3SinkConnectorTestBase extends StorageSinkTestBase {
+public class CustomS3SinkConnectorTestBase extends StorageSinkTestBase {
 
-  private static final Logger log = LoggerFactory.getLogger(S3SinkConnectorTestBase.class);
+  private static final Logger log = LoggerFactory.getLogger(CustomS3SinkConnectorTestBase.class);
 
   protected static final String S3_TEST_URL = "http://127.0.0.1:8181";
   protected static final String S3_TEST_BUCKET_NAME = "kafka.bucket";

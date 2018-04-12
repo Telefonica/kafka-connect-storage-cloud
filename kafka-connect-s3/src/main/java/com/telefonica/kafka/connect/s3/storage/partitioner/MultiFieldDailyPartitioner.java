@@ -72,7 +72,6 @@ public class MultiFieldDailyPartitioner<T> extends TimeBasedPartitioner<T> {
     Object value = sinkRecord.value();
     Schema valueSchema = sinkRecord.valueSchema();
     StringBuilder partition = new StringBuilder();
-    partition.append(super.encodePartition(sinkRecord) + delim);
 
     if (value instanceof Struct) {
       Struct struct = (Struct) value;
@@ -113,6 +112,7 @@ public class MultiFieldDailyPartitioner<T> extends TimeBasedPartitioner<T> {
     if (partition.length() > 0) {
       partition.delete(partition.length() - delim.length(), partition.length());
     }
+    partition.append(super.encodePartition(sinkRecord));
     return partition.toString();
   }
 }
