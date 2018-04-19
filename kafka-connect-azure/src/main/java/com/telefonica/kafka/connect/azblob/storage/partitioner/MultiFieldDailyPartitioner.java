@@ -103,6 +103,9 @@ public class MultiFieldDailyPartitioner<T> extends TimeBasedPartitioner<T> {
       Map<?, ?> map = (Map<?, ?>) value;
       for (String fieldName : fieldNames) {
         Object fieldValue = map.get(fieldName);
+        if (fieldValue == null) {
+          fieldValue = "null";
+        }
         partition.append(fieldName + "=" + fieldValue.toString() + delim);
       }
     } else {

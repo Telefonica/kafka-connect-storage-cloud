@@ -1,9 +1,5 @@
 package com.telefonica.kafka.connect.s3.storage.partitioner;
 
-import io.confluent.connect.storage.common.StorageCommonConfig;
-import io.confluent.connect.storage.errors.PartitionException;
-import io.confluent.connect.storage.partitioner.PartitionerConfig;
-import io.confluent.connect.storage.partitioner.TimeBasedPartitioner;
 import org.apache.kafka.common.config.ConfigException;
 import org.apache.kafka.connect.data.Schema;
 import org.apache.kafka.connect.data.Schema.Type;
@@ -18,6 +14,11 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import io.confluent.connect.storage.common.StorageCommonConfig;
+import io.confluent.connect.storage.errors.PartitionException;
+import io.confluent.connect.storage.partitioner.TimeBasedPartitioner;
+import io.confluent.connect.storage.partitioner.PartitionerConfig;
 
 public class MultiFieldDailyPartitioner<T> extends TimeBasedPartitioner<T> {
   private static final Logger log = LoggerFactory.getLogger(MultiFieldDailyPartitioner.class);
@@ -102,13 +103,15 @@ public class MultiFieldDailyPartitioner<T> extends TimeBasedPartitioner<T> {
       Map<?, ?> map = (Map<?, ?>) value;
       for (String fieldName : fieldNames) {
         Object fieldValue = map.get(fieldName);
+        if (fieldValue == null) {
+          fieldValue = "null";
+        }
         partition.append(fieldName + "=" + fieldValue.toString() + delim);
       }
     } else {
       log.error("Value is not of Struct or Map type.");
       throw new PartitionException("Error encoding partition.");
     }
-
 
     partition.append(super.encodePartition(sinkRecord));
     return partition.toString();
