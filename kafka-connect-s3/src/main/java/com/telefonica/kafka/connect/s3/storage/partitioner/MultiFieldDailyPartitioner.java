@@ -144,7 +144,7 @@ public class MultiFieldDailyPartitioner<T> extends TimeBasedPartitioner<T> {
                 case 0:
                 case 1:
                 case 2:
-                    extractorClassName = "com.telefonica.kafka.connect.azblob.storage.partitioner.MultiFieldDailyPartitioner$" + extractorClassName + "TimestampExtractor";
+                    extractorClassName = "com.telefonica.kafka.connect.s3.storage.partitioner.MultiFieldDailyPartitioner$" + extractorClassName + "TimestampExtractor";
                 default:
                     Class<?> klass = Class.forName(extractorClassName);
                     if (!TimestampExtractor.class.isAssignableFrom(klass)) {
