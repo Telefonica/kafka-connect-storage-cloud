@@ -188,18 +188,14 @@ public class AzBlobSinkTask extends SinkTask {
       String topic = record.topic();
       int partition = record.kafkaPartition();
       TopicPartition tp = new TopicPartition(topic, partition);
-      log.info("TopicPartition: {}", tp);
       TopicPartitionWriter topicPartitionWriter = topicPartitionWriters.get(tp);
-      log.info("topicPartitionWriter: {}", topicPartitionWriter);
       topicPartitionWriter.buffer(record);
     }
     if (log.isDebugEnabled()) {
       log.debug("Read {} records from Kafka", records.size());
     }
-    log.info("Read {} records from Kafka", records.size());
 
     for (TopicPartition tp : assignment) {
-      log.info("Writing topic partition {}", tp);
       TopicPartitionWriter topicPartitionWriter = topicPartitionWriters.get(tp);
       topicPartitionWriter.write();
     }
